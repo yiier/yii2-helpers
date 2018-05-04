@@ -22,5 +22,27 @@ or add
 to the require section of your `composer.json` file.
 
 
-Usage
+Method Listing
 -----
+
+**arrayShift**
+
+```php
+ArrayHelper::arrayShift([0 => 'a', 2 => 'c', 1 => 'b']);
+// [2 => 'c', 1 => 'b']
+```
+
+**saveAll**
+
+```php
+$rows = [];
+foreach ($items as $key => $value) {
+    $rows[$key]['title'] = $value['title'];
+    $rows[$key]['user_id'] = $userId;
+}
+if (!ModelHelper::saveAll(Post::tableName(), $rows)) {
+    throw new Exception();
+}
+```
+
+……
