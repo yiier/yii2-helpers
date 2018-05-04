@@ -1,0 +1,21 @@
+{
+    "name": "yiier/yii2-helpers",
+    "description": "Helpers for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","helpers"],
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "forecho",
+            "email": "caizhenghai@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "yiier\\helpers\\": ""
+        }
+    }
+}
