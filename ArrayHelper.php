@@ -19,4 +19,20 @@ class ArrayHelper extends BaseArrayHelper
     {
         return array_slice($array, 1, null, true);
     }
+    
+    /**
+     * 数组模糊搜索
+     * https://stackoverflow.com/questions/5808923
+     * @param $str string 字符串
+     * @param $data array 数据源
+     * @return array
+     */
+    public static function arraySearch($str = '', $data)
+    {
+        if (!$str) {
+            return $data;
+        }
+        $input = preg_quote($str, '~'); // don't forget to quote input string!
+        return preg_grep('~' . $input . '~', $data);
+    }
 }
