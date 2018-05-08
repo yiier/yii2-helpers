@@ -4,6 +4,7 @@
  * createTime : 2018/5/4 18:37
  * description:
  */
+namespace yiier\helpers;
 
 use yii\helpers\ArrayHelper as BaseArrayHelper;
 

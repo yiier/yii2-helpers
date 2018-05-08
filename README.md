@@ -45,4 +45,30 @@ if (!ModelHelper::saveAll(Post::tableName(), $rows)) {
 }
 ```
 
+**中国省份证验证**
+
+```php
+public function rules()
+{
+    return [
+        // ... 
+        ['id_card', '\yiier\helpers\validators\IdCardValidator'],
+        // code
+    ];
+}
+```
+
+**Array Validator**
+
+```php
+public function rules()
+{
+    return [
+        // ... 
+        ['product_ids', '\yiier\helpers\validators\ArrayValidator'],
+        // code
+    ];
+}
+```
+
 ……

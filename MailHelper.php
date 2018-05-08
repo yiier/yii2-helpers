@@ -1,6 +1,6 @@
 <?php
 
-namespace common\helpers;
+namespace yiier\helpers;
 
 /**
  * Class MailHelper

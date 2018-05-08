@@ -5,7 +5,7 @@
  * description:
  */
 
-namespace common\helpers;
+namespace yiier\helpers\validators;
 
 use yii\validators\Validator;
 

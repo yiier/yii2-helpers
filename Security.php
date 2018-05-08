@@ -1,11 +1,11 @@
 <?php
-
 /**
  * author     : forecho <caizhenghai@gmail.com>
  * createTime : 2015/12/29 18:37
  * description:
  */
-namespace common\helpers;
+
+namespace yiier\helpers;
 
 class Security
 {

@@ -5,9 +5,7 @@
  * description:
  */
 
-
-namespace common\helpers;
-
+namespace yiier\helpers;
 
 class DateHelper
 {
