@@ -45,7 +45,7 @@ if (!ModelHelper::saveAll(Post::tableName(), $rows)) {
 }
 ```
 
-**中国省份证验证**
+**中国身份证号码验证**
 
 ```php
 public function rules()
