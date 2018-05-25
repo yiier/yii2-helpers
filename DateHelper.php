@@ -66,4 +66,13 @@ class DateHelper
         return self::beginTimestamp($time) + 24 * 3600 - 1;
     }
 
+    /**
+     * 判断是否是时间戳
+     * @param $timestamp
+     * @return bool
+     */
+    public static function isTimestamp($timestamp)
+    {
+        return (is_numeric($timestamp) && (int)$timestamp == $timestamp);
+    }
 }
