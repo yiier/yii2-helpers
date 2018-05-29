@@ -63,4 +63,10 @@ change `composer.json` file, add this:
 },
 ```
 
+then run
+
+```
+$ composer dump
+```
+
 ……
