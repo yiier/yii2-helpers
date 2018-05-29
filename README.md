@@ -45,30 +45,16 @@ if (!ModelHelper::saveAll(Post::tableName(), $rows)) {
 }
 ```
 
-**中国身份证号码验证**
+**Global Functions**
 
-```php
-public function rules()
-{
-    return [
-        // ... 
-        ['id_card', '\yiier\helpers\validators\IdCardValidator'],
-        // code
-    ];
-}
+change `composer.json` file, add this:
+
 ```
-
-**Array Validator**
-
-```php
-public function rules()
-{
-    return [
-        // ... 
-        ['product_ids', '\yiier\helpers\validators\ArrayValidator'],
-        // code
-    ];
-}
+"autoload": {
+    "files": [
+      "vendor/yiier/yii2-helpers/GlobalFunctions.php"
+    ]
+},
 ```
 
 ……
