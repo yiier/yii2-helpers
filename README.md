@@ -192,4 +192,52 @@ change config file, main.php
 ],
 ```
 
+
+**ResponseHandler**
+
+RESTful Response Handler, change config file `main.php`:
+
+```php
+'components' => [
+    'response' => [
+        'class' => 'yii\web\Response',
+        'on beforeSend' => function ($event) {
+            yii::createObject([
+                'class' => 'yiier\helpers\ResponseHandler',
+                'event' => $event,
+            ])->formatResponse();
+        },
+    ],
+]
+```
+
+**Migration**
+
+```php
+<?php
+
+use yiier\helpers\Migration;
+
+class m170810_084615_create_post extends Migration
+{
+    /**
+     * @var string
+     */
+    public $tableName = '{{%post}}';
+
+    public function up()
+    {
+        $this->createTable($this->tableName, [
+            'id' => $this->primaryKey(),
+            'name' => $this->string()->notNull(),
+        ], $this->tableOptions);
+    }
+
+    public function down()
+    {
+        $this->dropTable($this->tableName);
+    }
+    
+}
+```
 ……
