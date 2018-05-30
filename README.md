@@ -63,4 +63,127 @@ change `composer.json` file, add this:
 },
 ```
 
+
+**SearchModel**
+
+示例一
+
+```php
+$searchModel = new SearchModel([
+    'model' => Topic::className(),
+    'scenario' => 'default',
+]);
+$dataProvider = $searchModel->search(['SearchModel' => Yii::$app->request->queryParams]);
+return $this->render('index', [
+     'dataProvider' => $dataProvider,
+]);
+```
+
+示例二
+
+```php
+$searchModel = new SearchModel([
+    'defaultOrder' => ['id' => SORT_DESC],
+    'model' => Topic::className(),
+    'scenario' => 'default',
+    'relations' => ['comment' => []], // 关联表（可以是Model里面的关联）
+    'partialMatchAttributes' => ['title'], // 模糊查询
+    'pageSize' => 15
+]);
+$dataProvider = $searchModel->search(['SearchModel' => Yii::$app->request->queryParams]);
+$dataProvider->query->andWhere([Topic::tableName() . '.user_id' => 23, Comment::tableName() . '.status' => 1]);
+return $this->render('index', [
+     'dataProvider' => $dataProvider,
+]);
+```
+
+
+**FileTarget**
+
+Can achieve results：`@app/runtime/logs/error/20151223_app.log`
+
+change config file, main.php
+
+```php
+'components' => [
+    'log' => [
+        'traceLevel' => YII_DEBUG ? 3 : 0,
+        'targets' => [
+            /**
+             * 错误级别日志：当某些需要立马解决的致命问题发生的时候，调用此方法记录相关信息。
+             * 使用方法：Yii::error()
+             */
+            [
+                'class' => 'yiier\helpers\FileTarget',
+                // 日志等级
+                'levels' => ['error'],
+                // 被收集记录的额外数据
+                'logVars' => ['_GET', '_POST', '_FILES', '_COOKIE', '_SESSION', '_SERVER'],
+                // 排除404错误
+                'except' => ['yii\web\HttpException:404'],
+                // 指定日志保存的文件名
+                'logFile' => '@app/runtime/logs/error/app.log',
+                // 是否开启日志 (@app/runtime/logs/error/20151223_app.log)
+                'enableDatePrefix' => true,
+            ],
+            /**
+             * 警告级别日志：当某些期望之外的事情发生的时候，使用该方法。
+             * 使用方法：Yii::warning()
+             */
+            [
+                'class' => 'yiier\helpers\FileTarget',
+                // 日志等级
+                'levels' => ['warning'],
+                // 被收集记录的额外数据
+                'logVars' => ['_GET', '_POST', '_FILES', '_COOKIE', '_SESSION', '_SERVER'],
+                // 指定日志保存的文件名
+                'logFile' => '@app/runtime/logs/warning/app.log',
+                // 是否开启日志 (@app/runtime/logs/warning/20151223_app.log)
+                'enableDatePrefix' => true,
+            ],
+            /**
+             * info 级别日志：在某些位置记录一些比较有用的信息的时候使用。
+             * 使用方法：Yii::info()
+             */
+            [
+                'class' => 'yiier\helpers\FileTarget',
+                'enabled' => false, // 表示关闭
+                // 日志等级
+                'levels' => ['info'],
+                // 被收集记录的额外数据
+                'logVars' => ['_GET', '_POST', '_FILES', '_COOKIE', '_SESSION', '_SERVER'],
+                // 指定日志保存的文件名
+                'logFile' => '@app/runtime/logs/info/app.log',
+                // 是否开启日志 (@app/runtime/logs/info/20151223_app.log)
+                'enableDatePrefix' => true,
+            ],
+            /**
+             * trace 级别日志：记录关于某段代码运行的相关消息。主要是用于开发环境。
+             * 使用方法：Yii::trace()
+             */
+            [
+                'class' => 'yiier\helpers\FileTarget',
+                'enabled' => false, // 表示关闭
+                // 日志等级
+                'levels' => ['trace'],
+                // 被收集记录的额外数据
+                'logVars' => ['_GET', '_POST', '_FILES', '_COOKIE', '_SESSION', '_SERVER'],
+                // 指定日志保存的文件名
+                'logFile' => '@app/runtime/logs/trace/app.log',
+                // 是否开启日志 (@app/runtime/logs/trace/20151223_app.log)
+                'enableDatePrefix' => true,
+            ],
+            [
+                'class' => 'yiier\helpers\FileTarget',
+                'enabled' => false, // 表示关闭
+                'levels' => ['profile'],
+                'logVars' => [],
+                'maxFileSize' => 1024,
+                'logFile' => '@app/runtime/logs/app/app.log',
+                'enableDatePrefix' => true,
+            ],
+        ],
+    ],
+],
+```
 ……
