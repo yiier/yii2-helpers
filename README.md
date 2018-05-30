@@ -63,6 +63,11 @@ change `composer.json` file, add this:
 },
 ```
 
+then run
+
+```
+$ composer dump
+```
 
 **SearchModel**
 
@@ -186,4 +191,5 @@ change config file, main.php
     ],
 ],
 ```
+
 ……
