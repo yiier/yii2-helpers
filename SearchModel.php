@@ -126,8 +126,10 @@ class SearchModel extends Model
                 // 查询两个值之间的数据，格式 (x,y)
                 if (isset($matches[1]) && isset($matches[2])) {
                     return ['between', $attributeName, $matches[1], $matches[2]];
+                } else {
+                    return [];
                 }
-                return [];
+                break;
             default:
                 return [$attributeName => $value];
                 break;
