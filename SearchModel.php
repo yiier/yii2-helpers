@@ -119,9 +119,6 @@ class SearchModel extends Model
             case stripos($value, '>') !== false:
                 return ['>', $attributeName, substr($value, 1)];
                 break;
-            case stripos($value, ',') !== false:
-                return [$attributeName => explode(',', $value)];
-                break;
             case preg_match("/\((\S*),(\S*)\)/", $value, $matches) == 1:
                 // 查询两个值之间的数据，格式 (x,y)
                 if (isset($matches[1]) && isset($matches[2])) {
@@ -129,6 +126,9 @@ class SearchModel extends Model
                 } else {
                     return [];
                 }
+                break;
+            case stripos($value, ',') !== false:
+                return [$attributeName => explode(',', $value)];
                 break;
             default:
                 return [$attributeName => $value];
