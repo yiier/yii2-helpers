@@ -64,4 +64,45 @@ class ArrayHelper extends BaseArrayHelper
     {
         return !array_diff($needles, $haystack);
     }
+
+    /**
+     * 对二维数组指定的字段进行排序
+     * @param array $array 要被排序的数组
+     * @param string $field 指定排序的字段
+     * @param string $schema 排序的模式 ASC 升序 DESC 降序
+     * @return mixed|array
+     */
+    public static function sort2DArray($array, $field = '', $schema = 'ASC')
+    {
+        usort($array, function($a, $b) use ($field, $schema) {
+            $result = 0;
+            if (is_array($a) && isset($a[$field])) {
+
+                if ($a[$field] == $b[$field]) {
+                    $result = 0;
+                }
+
+                if ($schema == 'ASC') {
+                    $result = ($a[$field] < $b[$field]) ? -1 : 1;
+                } else if ($schema == 'DESC') {
+                    $result = ($a[$field] < $b[$field]) ? 1 : -1;
+                }
+            } else {
+
+                if ($a == $b) {
+                    $result = 0;
+                }
+
+                if ($schema == 'ASC') {
+                    $result = ($a < $b) ? -1 : 1;
+                } else if ($schema == 'DESC') {
+                    $result = ($a < $b) ? 1 : -1;
+                }
+            }
+
+            return $result;
+        });
+
+        return $array;
+    }
 }
