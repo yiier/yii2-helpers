@@ -20,14 +20,12 @@ class Setup
     }
 
     /**
-     * 分转换成人民币元
-     * @param $data
-     * @param bool $float
-     * @return integer|float
+     * 分转换成人民币元（保留两位小数）
+     * @param $data integer
+     * @return float
      */
-    public static function toYuan($data, $float = false)
+    public static function toYuan($data)
     {
-        $num = $data ? round(($data / 100), 2) : 0;
-        return $float ? sprintf("%.2f", $num) : $num;
+        return bcdiv($data, 100, 2);
     }
 }
