@@ -73,6 +73,11 @@ class SearchModel extends Model
     public $relations = [];
 
     /**
+     * @var string 两者之间的查询，默认格式是： x~y
+     */
+    public $rangeConditionReg = "/(\s*.+)~(\s*.+)/";
+
+    /**
      * @param ActiveQuery $query
      * @param string $attribute
      * @param bool $partialMath
@@ -91,7 +96,7 @@ class SearchModel extends Model
         if ($partialMath) {
             $query->andWhere(['like', $attributeName, trim($value)]);
         } else {
-            $query->andWhere(self::conditionTrans($attributeName, $value));
+            $query->andWhere(self::conditionTrans($attributeName, $value, $this->rangeConditionReg));
         }
     }
 
@@ -101,7 +106,7 @@ class SearchModel extends Model
      * @param $value
      * @return array
      */
-    public static function conditionTrans($attributeName, $value)
+    public static function conditionTrans($attributeName, $value, $rangeConditionReg = '')
     {
         switch (true) {
             case is_array($value):
@@ -119,8 +124,8 @@ class SearchModel extends Model
             case stripos($value, '>') !== false:
                 return ['>', $attributeName, substr($value, 1)];
                 break;
-            case preg_match("/\((\S*),(\S*)\)/", $value, $matches) == 1:
-                // 查询两个值之间的数据，格式 (x,y)
+            case preg_match($rangeConditionReg, $value, $matches) == 1:
+                // 查询两个值之间的数据
                 if (isset($matches[1]) && isset($matches[2])) {
                     return ['between', $attributeName, $matches[1], $matches[2]];
                 } else {
@@ -128,6 +133,7 @@ class SearchModel extends Model
                 }
                 break;
             case stripos($value, ',') !== false:
+                // in 查询
                 return [$attributeName => explode(',', $value)];
                 break;
             default:
