@@ -58,8 +58,8 @@ change `composer.json` file, add this:
 ```
 "autoload": {
     "files": [
-      "vendor/yiier/yii2-helpers/GlobalFunctions.php",
-      "vendor/yiier/yii2-helpers/SupportFunctions.php"
+      "vendor/yiier/yii2-helpers/src/GlobalFunctions.php",
+      "vendor/yiier/yii2-helpers/src/SupportFunctions.php"
     ]
 },
 ```
@@ -242,7 +242,7 @@ class m170810_084615_create_post extends Migration
 }
 ```
 
-### StringHelper
+### String Helper
 
 ```php
 String::after('@', 'biohazard@online.ge'); // 'online.ge'
@@ -258,7 +258,7 @@ String::between('@', '.', 'biohazard@online.ge'); // 'online'
 String::betweenLast('[', ']', 'sin[90]*cos[180]'); // '180'
 ```
 
-### Setup
+### Setup Helper
 
 ```php
 
