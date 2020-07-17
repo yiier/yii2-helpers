@@ -31,14 +31,14 @@ to the require section of your `composer.json` file.
 Method Listing
 -----
 
-**arrayShift**
+### arrayShift
 
 ```php
 ArrayHelper::arrayShift([0 => 'a', 2 => 'c', 1 => 'b']);
 // [2 => 'c', 1 => 'b']
 ```
 
-**saveAll**
+### saveAll
 
 ```php
 $rows = [];
@@ -51,14 +51,15 @@ if (!ModelHelper::saveAll(Post::tableName(), $rows)) {
 }
 ```
 
-**Global Functions**
+### Global Functions
 
 change `composer.json` file, add this:
 
 ```
 "autoload": {
     "files": [
-      "vendor/yiier/yii2-helpers/GlobalFunctions.php"
+      "vendor/yiier/yii2-helpers/GlobalFunctions.php",
+      "vendor/yiier/yii2-helpers/SupportFunctions.php"
     ]
 },
 ```
@@ -69,7 +70,7 @@ then run
 $ composer dump
 ```
 
-**SearchModel**
+### SearchModel
 
 示例一
 
@@ -103,7 +104,7 @@ return $this->render('index', [
 ```
 
 
-**FileTarget**
+### FileTarget
 
 Can achieve results：`@app/runtime/logs/error/20151223_app.log`
 
@@ -193,7 +194,7 @@ change config file, main.php
 ```
 
 
-**ResponseHandler**
+### ResponseHandler
 
 RESTful Response Handler, change config file `main.php`:
 
@@ -211,7 +212,7 @@ RESTful Response Handler, change config file `main.php`:
 ]
 ```
 
-**Migration**
+### Migration
 
 ```php
 <?php
@@ -240,4 +241,33 @@ class m170810_084615_create_post extends Migration
     
 }
 ```
+
+### StringHelper
+
+```php
+String::after('@', 'biohazard@online.ge'); // 'online.ge'
+
+String::afterLast('[', 'sin[90]*cos[180]');// '180]'
+
+String::before('@', 'biohazard@online.ge'); // 'biohazard'
+
+String::beforeLast('[', 'sin[90]*cos[180]'); // 'sin[90]*cos'
+
+String::between('@', '.', 'biohazard@online.ge'); // 'online'
+
+String::betweenLast('[', ']', 'sin[90]*cos[180]'); // '180'
+```
+
+### Setup
+
+```php
+
+Setup::toFen(100); // 10000
+Setup::toYuan(100); // 1
+
+
+Setup::errorMessage($model->firstErrors);
+```
+
+
 ……

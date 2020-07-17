@@ -6,6 +6,7 @@
  * description:
  */
 
+use yii\helpers\VarDumper;
 use yii\web\Response;
 
 if (!function_exists('app')) {
@@ -159,5 +160,27 @@ if (!function_exists('pr')) {
         if ($debug) {
             die;
         }
+    }
+}
+
+if (!function_exists('dump')) {
+    /**
+     * @param mixed $var
+     */
+    function dump($var)
+    {
+        VarDumper::dump($var);
+    }
+}
+
+
+if (!function_exists('dd')) {
+    /**
+     * @param mixed $var
+     */
+    function dd($var)
+    {
+        VarDumper::dump($var);
+        die(1);
     }
 }
