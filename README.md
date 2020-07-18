@@ -245,28 +245,36 @@ class m170810_084615_create_post extends Migration
 ### String Helper
 
 ```php
-String::after('@', 'biohazard@online.ge'); // 'online.ge'
+yiier\helpers\String::after('@', 'biohazard@online.ge'); // 'online.ge'
 
-String::afterLast('[', 'sin[90]*cos[180]');// '180]'
+yiier\helpers\String::afterLast('[', 'sin[90]*cos[180]');// '180]'
 
-String::before('@', 'biohazard@online.ge'); // 'biohazard'
+yiier\helpers\String::before('@', 'biohazard@online.ge'); // 'biohazard'
 
-String::beforeLast('[', 'sin[90]*cos[180]'); // 'sin[90]*cos'
+yiier\helpers\String::beforeLast('[', 'sin[90]*cos[180]'); // 'sin[90]*cos'
 
-String::between('@', '.', 'biohazard@online.ge'); // 'online'
+yiier\helpers\String::between('@', '.', 'biohazard@online.ge'); // 'online'
 
-String::betweenLast('[', ']', 'sin[90]*cos[180]'); // '180'
+yiier\helpers\String::betweenLast('[', ']', 'sin[90]*cos[180]'); // '180'
 ```
 
 ### Setup Helper
 
 ```php
+yiier\helpers\Setup::toFen(100); // 10000
+yiier\helpers\Setup::toYuan(100); // 1
 
-Setup::toFen(100); // 10000
-Setup::toYuan(100); // 1
+\yiier\helpers\Setup::errorMessage($model->firstErrors);
+```
 
+### Date Helper
 
-Setup::errorMessage($model->firstErrors);
+```php
+\yiier\helpers\DateHelper::convert('1454214981');
+\yiier\helpers\DateHelper::convert('1454214981','date');
+\yiier\helpers\DateHelper::convert('1454214981','time');
+
+//……
 ```
 
 
