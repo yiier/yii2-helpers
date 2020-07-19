@@ -7,12 +7,14 @@
 
 namespace yiier\helpers;
 
+use Exception;
+
 class Security
 {
     /**
      *  创建一个随机字符串
-     * @param   string  the type of string
-     * @param   int     the number of characters
+     * @param string  the type of string
+     * @param int     the number of characters
      * @return  string  the random string
      */
     public static function random($type = 'alnum', $length = 16)
@@ -87,6 +89,24 @@ class Security
     public static function generatePassword($salt, $password)
     {
         return md5($salt . $password);
+    }
+
+    /**
+     * @param int $length
+     * @return false|string
+     * @throws Exception
+     */
+    public static function generateRealUniqId($length = 13)
+    {
+        // uniqid gives 13 chars, but you could adjust it to your needs.
+        if (function_exists("random_bytes")) {
+            $bytes = random_bytes(ceil($length / 2));
+        } elseif (function_exists("openssl_random_pseudo_bytes")) {
+            $bytes = openssl_random_pseudo_bytes(ceil($length / 2));
+        } else {
+            throw new Exception("no cryptographically secure random function available");
+        }
+        return substr(bin2hex($bytes), 0, $length);
     }
 
 }

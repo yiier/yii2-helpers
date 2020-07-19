@@ -277,5 +277,14 @@ yiier\helpers\Setup::toYuan(100); // 1
 //……
 ```
 
+### Security
+
+```php
+<?php
+yiier\helpers\Security::random();
+yiier\helpers\Security::generateSalt();
+yiier\helpers\Security::generateRealUniqId();
+```
+
 
 ……
