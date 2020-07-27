@@ -286,5 +286,32 @@ yiier\helpers\Security::generateSalt();
 yiier\helpers\Security::generateRealUniqId();
 ```
 
+### requestId
+
+
+change `config.php` code :
+
+```php
+<?php     
+// ...
+return [
+    'components' => [
+         'requestId' => [
+            'class' => \yiier\helpers\RequestId::class,
+            'delimiter' => '-', // Optional
+            '$requestIdParamName' => 'X_REQUEST_ID', // Optional
+            '$requestIdHeaderName' => 'X-Request-ID', // Optional
+         ],
+      // ...
+    ],
+]
+
+```
+
+use
+
+```php
+Yii::$app->requestId->id;
+```
 
 ……
