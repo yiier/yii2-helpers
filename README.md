@@ -299,8 +299,8 @@ return [
          'requestId' => [
             'class' => \yiier\helpers\RequestId::class,
             'delimiter' => '-', // Optional
-            '$requestIdParamName' => 'X_REQUEST_ID', // Optional
-            '$requestIdHeaderName' => 'X-Request-ID', // Optional
+            'requestIdParamName' => 'X_REQUEST_ID', // Optional
+            'requestIdHeaderName' => 'X-Request-ID', // Optional
          ],
       // ...
     ],
