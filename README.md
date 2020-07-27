@@ -289,7 +289,7 @@ yiier\helpers\Security::generateRealUniqId();
 ### requestId
 
 
-change `config.php` code :
+change `config.php` , add code :
 
 ```php
 <?php     
