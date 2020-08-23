@@ -7,7 +7,7 @@
 
 namespace yiier\helpers;
 
-class String
+class StringHelper
 {
     /**
      * after('@', 'biohazard@online.ge');

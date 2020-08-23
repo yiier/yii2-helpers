@@ -245,17 +245,17 @@ class m170810_084615_create_post extends Migration
 ### String Helper
 
 ```php
-yiier\helpers\String::after('@', 'biohazard@online.ge'); // 'online.ge'
+yiier\helpers\StringHelper::after('@', 'biohazard@online.ge'); // 'online.ge'
 
-yiier\helpers\String::afterLast('[', 'sin[90]*cos[180]');// '180]'
+yiier\helpers\StringHelper::afterLast('[', 'sin[90]*cos[180]');// '180]'
 
-yiier\helpers\String::before('@', 'biohazard@online.ge'); // 'biohazard'
+yiier\helpers\StringHelper::before('@', 'biohazard@online.ge'); // 'biohazard'
 
-yiier\helpers\String::beforeLast('[', 'sin[90]*cos[180]'); // 'sin[90]*cos'
+yiier\helpers\StringHelper::beforeLast('[', 'sin[90]*cos[180]'); // 'sin[90]*cos'
 
-yiier\helpers\String::between('@', '.', 'biohazard@online.ge'); // 'online'
+yiier\helpers\StringHelper::between('@', '.', 'biohazard@online.ge'); // 'online'
 
-yiier\helpers\String::betweenLast('[', ']', 'sin[90]*cos[180]'); // '180'
+yiier\helpers\StringHelper::betweenLast('[', ']', 'sin[90]*cos[180]'); // '180'
 ```
 
 ### Setup Helper
